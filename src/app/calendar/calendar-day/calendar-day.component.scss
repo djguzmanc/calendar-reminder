@@ -1,0 +1,24 @@
+@import '_colors';
+
+:host {
+  background-color: white;
+  border: solid 1px #d8d8d8;
+  padding: 5px;
+}
+
+.number-label {
+  display: block;
+}
+
+.disabled {
+  color: #c5c5c5 !important;
+}
+
+.edge-number {
+  color: $blue;
+}
+
+.reminders-overflow {
+  overflow-y: auto;
+  max-height: calc(100% - 19px);
+}

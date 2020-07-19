@@ -28,8 +28,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/scss/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/scss/settings"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
@@ -92,8 +97,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/scss/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/scss/settings"
+              ]
+            },
             "scripts": []
           }
         },
@@ -123,6 +133,11 @@
           }
         }
       }
-    }},
-  "defaultProject": "simple-calendar"
+    }
+  },
+  "defaultProject": "simple-calendar",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics",
+    "analytics": "fc01bb38-6652-45a8-b003-de6fa02c1043"
+  }
 }

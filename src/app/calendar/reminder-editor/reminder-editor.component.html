@@ -1,0 +1,76 @@
+<h2 class="reminder-title">New Reminder for {{ date | date }}</h2>
+<hr class="divider">
+
+<form
+  [formGroup]="reminderForm"
+  class="reminder-form"
+  (ngSubmit)="createReminder()">
+
+  <div class="form-container">
+    <div class="reminder-form__left-content">
+      <mat-form-field class="reminder-form__input-container">
+        <mat-label>Reminder</mat-label>
+        <textarea
+          class="input-container__reminder-control"
+          formControlName="reminder"
+          matInput
+          placeholder="Clean the dishes..."></textarea>
+        <ng-container *ngIf="reminderForm.get('reminder') as reminderControl">
+          <ng-container *ngIf="reminderControl.errors?.maxlength">
+            <mat-error>
+              Max {{ reminderControl.errors.maxlength.requiredLength }} characters!
+            </mat-error>
+          </ng-container>
+        </ng-container>
+      </mat-form-field>
+
+      <mat-form-field class="reminder-form__input-container">
+        <mat-label>City</mat-label>
+        <input
+          formControlName="city"
+          matInput
+          placeholder="London">
+      </mat-form-field>
+    </div>
+
+    <div class="reminder-form__right-content">
+      <div>
+        <label>Choose a color</label>
+        <input
+          class="color-input"
+          formControlName="color"
+          type="color">
+      </div>
+
+      <div class="time">
+        <button
+          (click)="onTimeClick(picker)"
+          type="button">
+          <strong>
+            {{ reminderForm.get('time')?.value }}
+          </strong>
+        </button>
+        <ngx-material-timepicker
+          #picker
+          (timeSet)="onTimeChange($event)"></ngx-material-timepicker>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button
+      type="submit"
+      mat-raised-button
+      color="primary"
+      [disabled]="reminderForm.invalid">
+      Create
+    </button>
+    <button
+      type="button"
+      (click)="onCancelClick()"
+      mat-button
+      color="warn">
+      Cancel
+    </button>
+  </div>
+</form>

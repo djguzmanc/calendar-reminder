@@ -1,0 +1,61 @@
+@import "_colors";
+
+.reminder-title {
+  color: $blue;
+  margin-bottom: 0;
+}
+
+.divider {
+  margin-bottom: 30px;
+}
+
+.form-container {
+  width: 100%;
+  display: flex;
+}
+
+.reminder-form__input-container {
+  display: block;
+}
+
+.input-container__reminder-control {
+  height: 4rem;
+}
+
+.reminder-form__left-content {
+  min-width: 250px;
+}
+
+.reminder-form__right-content {
+  text-align: center;
+  margin-left: 15px;
+}
+
+.color-input {
+  margin-left: 10px;
+}
+
+.time {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 140px;
+  width: 250px;
+  button {
+    cursor: pointer;
+    color: $blue;
+    font-size: 2.5rem;
+    background-color: transparent;
+    border: none;
+  }
+}
+
+.actions {
+  margin-top: 15px;
+  text-align: center;
+  button {
+    &:not(:first-child) {
+      margin-left: 15px;
+    }
+  }
+}

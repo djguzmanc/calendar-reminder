@@ -1,0 +1,13 @@
+<strong
+  class="number-label"
+  [class.edge-number]="isEdge"
+  [class.disabled]="disabled">{{ dayNumber }}</strong>
+
+<ng-container *ngIf="!disabled">
+  <div class="reminders-overflow">
+    <app-reminder
+      tabindex="0"
+      *ngFor="let reminder of reminders; let i = index"
+      [reminder]="reminder"></app-reminder>
+  </div>
+</ng-container>
