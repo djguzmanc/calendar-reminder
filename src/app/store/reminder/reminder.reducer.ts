@@ -1,6 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import { IReminder } from 'src/app/utils/interfaces/reminder.interface';
 import { addReminder } from './reminder.actions';
+import { findReminderIndex } from 'src/app/utils/functions/reminder-insert-index.function';
 
 export const reminderFeatureKey = 'reminder';
 
@@ -23,7 +24,8 @@ export const remindersReducer = createReducer(
     const dayData = monthData[action.day] || [];
 
     const copy = [...dayData];
-    copy.push(action.reminder);
+    const reminderPosition = findReminderIndex(action.reminder, copy);
+    copy.splice(reminderPosition.index || 0, 0, action.reminder);
 
     return {
       ...state,

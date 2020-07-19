@@ -33,13 +33,9 @@ export class ReminderEditorComponent implements OnInit {
     this.reminderForm = new FormGroup({
       reminder: new FormControl(null, [Validators.required, Validators.maxLength(30)]),
       city: new FormControl(null, [Validators.required]),
-      color: new FormControl('#36dd4a', [Validators.required]),
-      time: new FormControl('9:00 AM', [Validators.required]),
+      color: new FormControl('#ff8e24', [Validators.required]),
+      time: new FormControl('9:00', [Validators.required]),
     });
-  }
-
-  onTimeChange(e: string) {
-    this.reminderForm.get('time')?.setValue(e);
   }
 
   onTimeClick(timePickerRef: NgxMaterialTimepickerComponent): void {

@@ -16,6 +16,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { ReminderComponent } from './calendar/calendar-day/reminder/reminder.component';
+import { SharedPipesModule } from './pipes/shared-pipes.module';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ReminderComponent } from './calendar/calendar-day/reminder/reminder.com
   ],
   imports: [
     BrowserModule,
+    SharedPipesModule,
     MatDialogModule,
     MatButtonModule,
     MatInputModule,

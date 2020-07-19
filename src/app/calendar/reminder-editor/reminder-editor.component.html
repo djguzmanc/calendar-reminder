@@ -43,6 +43,11 @@
       </div>
 
       <div class="time">
+        <input
+          formControlName="time"
+          [ngxTimepicker]="picker"
+          [format]="24"
+          hidden>
         <button
           (click)="onTimeClick(picker)"
           type="button">
@@ -52,7 +57,7 @@
         </button>
         <ngx-material-timepicker
           #picker
-          (timeSet)="onTimeChange($event)"></ngx-material-timepicker>
+          [enableKeyboardInput]="true"></ngx-material-timepicker>
       </div>
     </div>
   </div>
