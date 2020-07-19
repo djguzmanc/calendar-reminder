@@ -31,6 +31,20 @@
           matInput
           placeholder="London">
       </mat-form-field>
+
+      <ng-template #fetchForecast>
+        <div
+          class="forecast"
+          *ngIf="isFetchingForecast">
+          Fetching forecast...
+        </div>
+      </ng-template>
+      <div
+        class="forecast"
+        *ngIf="forecast$ | async as forecast; else fetchForecast">
+        <ng-container *ngTemplateOutlet="fetchForecast"></ng-container>
+        <ng-container *ngIf="!isFetchingForecast">Forecast: {{ forecast }}</ng-container>
+      </div>
     </div>
 
     <div class="reminder-form__right-content">

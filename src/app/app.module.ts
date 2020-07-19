@@ -17,6 +17,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { ReminderComponent } from './calendar/calendar-day/reminder/reminder.component';
 import { SharedPipesModule } from './pipes/shared-pipes.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { SharedPipesModule } from './pipes/shared-pipes.module';
   imports: [
     BrowserModule,
     SharedPipesModule,
+    HttpClientModule,
     MatDialogModule,
     MatButtonModule,
     MatInputModule,
