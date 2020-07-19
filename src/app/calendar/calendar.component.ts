@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ReminderEditorComponent } from './reminder-editor/reminder-editor.component';
 import { Store } from '@ngrx/store';
 import { CalendarState } from '../store';
-import { addReminder } from '../store/reminder/reminder.actions';
+import { addReminder, editReminder } from '../store/reminder/reminder.actions';
 import { IReminder } from '../utils/interfaces/reminder.interface';
 import { IDayInfo } from '../utils/interfaces/day-info.interface';
 
@@ -63,6 +63,27 @@ export class CalendarComponent implements OnInit {
         }
       });
     }
+  }
+
+  onReminderClick(day: IDayInfo, index: number, reminder: IReminder): void {
+    this.matDialog.open(ReminderEditorComponent, {
+      data: {
+        currentYear: this.year,
+        currentMonth: this.month,
+        day: day.dayNumber,
+        reminder
+      }
+    }).afterClosed().subscribe(res => {
+      if (res) {
+        this.store.dispatch(editReminder({
+          year: this.year,
+          month: this.month,
+          day: day.dayNumber,
+          reminder: res,
+          index
+        }));
+      }
+    });
   }
 
 }

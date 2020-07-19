@@ -7,6 +7,8 @@
   <div class="reminders-overflow">
     <app-reminder
       tabindex="0"
+      (keyup)="onKeyAction(i, reminder, $event)"
+      (click)="onReminderClick(i, reminder, $event)"
       *ngFor="let reminder of reminders; let i = index"
       [reminder]="reminder"></app-reminder>
   </div>

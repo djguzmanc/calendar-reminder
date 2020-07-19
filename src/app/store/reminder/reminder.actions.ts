@@ -10,3 +10,14 @@ export const addReminder = createAction(
     day: number;
   }>()
 );
+
+export const editReminder = createAction(
+  '[Reminder] Edit Reminder',
+  props<{
+    reminder: IReminder;
+    year: number;
+    month: number;
+    day: number;
+    index: number;
+  }>()
+);

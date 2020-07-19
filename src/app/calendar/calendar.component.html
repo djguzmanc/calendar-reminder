@@ -15,5 +15,6 @@
     [dayNumber]="day.dayNumber"
     [disabled]="day.disabled"
     [isEdge]="day.isEdge"
-    [reminders]="day.reminders"></app-calendar-day>
+    [reminders]="day.reminders"
+    (action)="onReminderClick(day, $event.index, $event.reminder)"></app-calendar-day>
 </div>

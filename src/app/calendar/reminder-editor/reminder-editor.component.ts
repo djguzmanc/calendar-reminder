@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { NgxMaterialTimepickerComponent } from 'ngx-material-timepicker';
+import { IReminder } from 'src/app/utils/interfaces/reminder.interface';
 
 @Component({
   selector: 'app-reminder-editor',
@@ -19,6 +20,7 @@ export class ReminderEditorComponent implements OnInit {
       currentYear: number;
       currentMonth: number;
       day: number;
+      reminder?: IReminder
     },
     private matDialogRef: MatDialogRef<ReminderEditorComponent>
   ) { }
@@ -31,10 +33,10 @@ export class ReminderEditorComponent implements OnInit {
     );
 
     this.reminderForm = new FormGroup({
-      reminder: new FormControl(null, [Validators.required, Validators.maxLength(30)]),
-      city: new FormControl(null, [Validators.required]),
-      color: new FormControl('#ff8e24', [Validators.required]),
-      time: new FormControl('9:00', [Validators.required]),
+      reminder: new FormControl(this.data.reminder?.reminder, [Validators.required, Validators.maxLength(30)]),
+      city: new FormControl(this.data.reminder?.city, [Validators.required]),
+      color: new FormControl(this.data.reminder?.color || '#ff8e24', [Validators.required]),
+      time: new FormControl(this.data.reminder?.time || '9:00', [Validators.required]),
     });
   }
 

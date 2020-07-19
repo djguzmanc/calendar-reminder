@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, HostBinding } from '@angular/core';
+import { Component, OnInit, Input, HostBinding, Output, EventEmitter } from '@angular/core';
 import { IReminder } from 'src/app/utils/interfaces/reminder.interface';
 
 @Component({
@@ -28,6 +28,12 @@ export class CalendarDayComponent implements OnInit {
   @Input()
   disabled: boolean = false;
 
+  @Output()
+  action = new EventEmitter<{
+    index: number,
+    reminder: IReminder
+  }>();
+
   @HostBinding('style.background-color')
   bgColor: string = 'white';
 
@@ -42,6 +48,21 @@ export class CalendarDayComponent implements OnInit {
     if (this.disabled) {
       this.cursor = 'initial';
     }
+  }
+
+  onKeyAction(index: number, reminder: IReminder, event: KeyboardEvent): void {
+    if (event.key === ' ') {
+      event.stopPropagation();
+      this.onReminderClick(index, reminder);
+    }
+  }
+
+  onReminderClick(index: number, reminder: IReminder, event?: MouseEvent): void {
+    event?.stopPropagation();
+    this.action.emit({
+      index,
+      reminder
+    });
   }
 
 }
