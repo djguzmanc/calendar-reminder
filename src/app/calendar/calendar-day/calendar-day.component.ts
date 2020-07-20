@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, HostBinding, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, HostBinding, Output, EventEmitter, SimpleChanges, OnChanges } from '@angular/core';
 import { IReminder } from 'src/app/utils/interfaces/reminder.interface';
 
 @Component({
@@ -6,7 +6,7 @@ import { IReminder } from 'src/app/utils/interfaces/reminder.interface';
   templateUrl: './calendar-day.component.html',
   styleUrls: ['./calendar-day.component.scss']
 })
-export class CalendarDayComponent implements OnInit {
+export class CalendarDayComponent implements OnInit, OnChanges {
 
   constructor() { }
 
@@ -40,13 +40,22 @@ export class CalendarDayComponent implements OnInit {
   @HostBinding('style.cursor')
   cursor: string = 'pointer';
 
-  ngOnInit(): void {
-    if (this.isEdge) {
-      this.bgColor = '#f2f2f2';
-    }
+  ngOnInit(): void { }
 
-    if (this.disabled) {
-      this.cursor = 'initial';
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.disabled) {
+      if (changes.disabled.currentValue) {
+        this.cursor = 'initial';
+      } else {
+        this.cursor = 'pointer';
+      }
+    }
+    if (changes.isEdge) {
+      if (changes.isEdge.currentValue) {
+        this.bgColor = '#f2f2f2';
+      } else {
+        this.bgColor = 'white';
+      }
     }
   }
 

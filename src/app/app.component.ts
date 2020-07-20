@@ -28,7 +28,11 @@ export class AppComponent {
     this.currentMonth = date.getMonth();
     this.currentYear = date.getFullYear();
 
-    this.days$ = store.select(allReminders(this.currentYear, this.currentMonth));
+    this.initializeDaysStream();
+  }
+
+  initializeDaysStream(): void {
+    this.days$ = this.store.select(allReminders(this.currentYear, this.currentMonth));
   }
 
   onNewReminder(reminderData: any): void {
@@ -37,5 +41,14 @@ export class AppComponent {
 
   onEditedReminder(reminderData: any): void {
     this.store.dispatch(editReminder(reminderData));
+  }
+
+  onDateChange(date: {
+    year: number;
+    month: number
+  }): void {
+    this.currentYear = date.year;
+    this.currentMonth = date.month;
+    this.initializeDaysStream();
   }
 }

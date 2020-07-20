@@ -1,3 +1,12 @@
+<div class="date-bar">
+  <i
+    class="material-icons"
+    (click)="onPrevMonth()">arrow_left</i>
+  <span>{{ currentDate | date:'MMMM yyyy' }}</span>
+  <i
+    class="material-icons"
+    (click)="onNextMonth()">arrow_right</i>
+</div>
 <div class="calendar-container">
   <div
     class="day-label"

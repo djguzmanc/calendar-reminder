@@ -3,6 +3,18 @@
 :host {
 }
 
+.date-bar {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  background-color: map-get($map: $md-primary, $key: 800);
+  color: white;
+  .material-icons {
+    cursor: pointer;
+  }
+}
+
 $day-label-height: 30px;
 
 .calendar-container {
@@ -14,7 +26,7 @@ $day-label-height: 30px;
 
 app-calendar-day {
   width: calc(100% / 7);
-  height: calc((100vh - #{$day-label-height}) / 6);
+  height: calc((100vh - #{$day-label-height + 34px}) / 6);
   transition: .2s;
   outline: none;
   &:focus {

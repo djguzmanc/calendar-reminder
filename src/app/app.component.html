@@ -3,4 +3,5 @@
   [month]="currentMonth"
   [days]="days$ | async"
   (newReminder)="onNewReminder($event)"
-  (editedReminder)="onEditedReminder($event)"></app-calendar>
+  (editedReminder)="onEditedReminder($event)"
+  (dateChange)="onDateChange($event)"></app-calendar>
