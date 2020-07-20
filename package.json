@@ -23,11 +23,13 @@
     "@angular/router": "~9.1.4",
     "@ngrx/store": "^9.2.0",
     "@ngrx/store-devtools": "^9.2.0",
+    "classlist.js": "^1.1.20150312",
     "lodash": "^4.17.19",
     "ngx-material-timepicker": "^5.5.3",
     "ngx-perfect-scrollbar": "^9.0.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
+    "web-animations-js": "^2.3.2",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {

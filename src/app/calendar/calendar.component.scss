@@ -1,4 +1,4 @@
-@import '_colors';
+@import "_colors";
 
 :host {
 }
@@ -27,7 +27,7 @@ $day-label-height: 30px;
 app-calendar-day {
   width: calc(100% / 7);
   height: calc((100vh - #{$day-label-height + 34px}) / 6);
-  transition: .2s;
+  transition: 0.2s;
   outline: none;
   &:focus {
     background-color: map-get($map: $md-primary, $key: 50) !important;
@@ -56,4 +56,15 @@ app-calendar-day {
   text-align: center;
   height: $day-label-height;
   line-height: $day-label-height;
+}
+
+/* Style only for Internet Explorer */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .day-label {
+    width: calc((100% - 1px) / 7);
+  }
+
+  app-calendar-day {
+    width: calc((100% - 1px) / 7);
+  }
 }

@@ -65,6 +65,9 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "es5": {
+              "tsConfig": "./tsconfig-es5.app.json"
             }
           }
         },
@@ -76,6 +79,9 @@
           "configurations": {
             "production": {
               "browserTarget": "simple-calendar:build:production"
+            },
+            "es5": {
+              "browserTarget": "simple-calendar:build:es5"
             }
           }
         },
