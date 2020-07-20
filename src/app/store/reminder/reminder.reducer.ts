@@ -3,7 +3,7 @@ import { IReminder } from 'src/app/utils/interfaces/reminder.interface';
 import { addReminder, editReminder } from './reminder.actions';
 import { findReminderIndex } from 'src/app/utils/functions/reminder-insert-index.function';
 
-export const reminderFeatureKey = 'reminder';
+export const reminderFeatureKey = 'reminders';
 
 export type RemindersState = {
   [key: number]: {

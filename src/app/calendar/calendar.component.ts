@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DAYS } from '../utils/constants/days.constant';
 import { MatDialog } from '@angular/material/dialog';
 import { ReminderEditorComponent } from './reminder-editor/reminder-editor.component';
@@ -24,12 +24,28 @@ export class CalendarComponent implements OnInit {
   @Input()
   month: number;
 
+  @Output()
+  newReminder = new EventEmitter < {
+    year: number;
+    month: number;
+    day: number;
+    reminder: IReminder
+  }>();
+
+  @Output()
+  editedReminder = new EventEmitter<{
+    index: number;
+    year: number;
+    month: number;
+    day: number;
+    reminder: IReminder
+  }>();
+
   dayLabels = DAYS;
   dayHeight: number;
 
   constructor(
-    private matDialog: MatDialog,
-    private store: Store<CalendarState>
+    private matDialog: MatDialog
   ) { }
 
   ngOnInit(): void { }
@@ -54,12 +70,12 @@ export class CalendarComponent implements OnInit {
         }
       }).afterClosed().subscribe(res => {
         if (res) {
-          this.store.dispatch(addReminder({
+          this.newReminder.emit({
             year: this.year,
             month: this.month,
             day: day.dayNumber,
             reminder: res
-          }));
+          });
         }
       });
     }
@@ -75,13 +91,20 @@ export class CalendarComponent implements OnInit {
       }
     }).afterClosed().subscribe(res => {
       if (res) {
-        this.store.dispatch(editReminder({
+        this.editedReminder.emit({
           year: this.year,
           month: this.month,
           day: day.dayNumber,
           reminder: res,
           index
-        }));
+        });
+        // this.store.dispatch(editReminder({
+        //   year: this.year,
+        //   month: this.month,
+        //   day: day.dayNumber,
+        //   reminder: res,
+        //   index
+        // }));
       }
     });
   }

@@ -44,15 +44,17 @@ export class ReminderEditorComponent implements OnInit {
     );
     this.date.setHours(9, 0, 0, 0);
 
+    this.initializeForm();
+    this.initializeForecastService();
+  }
 
+  initializeForm(): void {
     this.reminderForm = new FormGroup({
       reminder: new FormControl(this.data.reminder?.reminder, [Validators.required, Validators.maxLength(30)]),
       city: new FormControl(this.data.reminder?.city, [Validators.required]),
       color: new FormControl(this.data.reminder?.color || '#ff8e24', [Validators.required]),
       time: new FormControl(this.data.reminder?.time || '9:00', [Validators.required]),
     });
-
-    this.initializeForecastService();
   }
 
   initializeForecastService(): void {

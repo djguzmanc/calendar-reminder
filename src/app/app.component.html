@@ -1,4 +1,6 @@
 <app-calendar
   [year]="currentYear"
   [month]="currentMonth"
-  [days]="days$ | async"></app-calendar>
+  [days]="days$ | async"
+  (newReminder)="onNewReminder($event)"
+  (editedReminder)="onEditedReminder($event)"></app-calendar>

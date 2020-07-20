@@ -1,8 +1,8 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { RemindersState } from './reminder.reducer';
+import { RemindersState, reminderFeatureKey } from './reminder.reducer';
 import { buildMonthArray } from 'src/app/utils/functions/month-builder.function';
 
-const getAllReminders = createFeatureSelector<RemindersState>('reminders');
+const getAllReminders = createFeatureSelector<RemindersState>(reminderFeatureKey);
 
 export const allReminders = (year: number, month: number) => {
 
@@ -18,7 +18,7 @@ export const allReminders = (year: number, month: number) => {
 
         return {
           ...day,
-          reminders: dayData
+          reminders: day.disabled ? [] : dayData
         };
       });
     }

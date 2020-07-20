@@ -5,7 +5,7 @@ import { allReminders } from './store/reminder/reminder.selectors';
 import { IDayInfo } from './utils/interfaces/day-info.interface';
 import { IReminder } from './utils/interfaces/reminder.interface';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { addReminder, editReminder } from './store/reminder/reminder.actions';
 
 @Component({
   selector: 'app-root',
@@ -29,5 +29,13 @@ export class AppComponent {
     this.currentYear = date.getFullYear();
 
     this.days$ = store.select(allReminders(this.currentYear, this.currentMonth));
+  }
+
+  onNewReminder(reminderData: any): void {
+    this.store.dispatch(addReminder(reminderData));
+  }
+
+  onEditedReminder(reminderData: any): void {
+    this.store.dispatch(editReminder(reminderData));
   }
 }

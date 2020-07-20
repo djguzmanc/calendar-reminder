@@ -3,15 +3,14 @@ import {
   MetaReducer
 } from '@ngrx/store';
 import { environment } from '../../environments/environment';
-import { RemindersState, remindersReducer } from './reminder/reminder.reducer';
-
+import { RemindersState, remindersReducer, reminderFeatureKey } from './reminder/reminder.reducer';
 
 export interface CalendarState {
-  reminders: RemindersState;
+  [reminderFeatureKey]: RemindersState;
 }
 
 export const reducers: ActionReducerMap<CalendarState> = {
-  reminders: remindersReducer
+  [reminderFeatureKey]: remindersReducer
 };
 
 

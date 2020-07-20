@@ -45,9 +45,9 @@ import { HttpClientModule } from '@angular/common/http';
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

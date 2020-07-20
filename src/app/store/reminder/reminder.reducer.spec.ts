@@ -1,13 +1,46 @@
-import { reducer, initialState } from './reminder.reducer';
+import { remindersReducer, initialState } from './reminder.reducer';
+import { addReminder } from './reminder.actions';
 
-describe('Reminder Reducer', () => {
-  describe('an unknown action', () => {
-    it('should return the previous state', () => {
-      const action = {} as any;
+fdescribe('Reminders Reducer', () => {
+  fdescribe('Add reminder action', () => {
+    it('should return state with the new reminder(s)', () => {
 
-      const result = reducer(initialState, action);
+      const day = 7;
+      const month = 7;
+      const year = 7;
+      const reminder = {
+        city: 'London',
+        color: '#fff',
+        reminder: 'Wash dishes',
+        time: '9:00 AM'
+      };
 
-      expect(result).toBe(initialState);
+      const action = addReminder({
+        day,
+        month,
+        year,
+        reminder
+      });
+
+      let result = remindersReducer(initialState, action);
+
+      expect(result).toEqual({
+        [year]: {
+          [month]: {
+            [day]: [reminder]
+          }
+        }
+      });
+
+      result = remindersReducer(result, action);
+
+      expect(result).toEqual({
+        [year]: {
+          [month]: {
+            [day]: [reminder, reminder]
+          }
+        }
+      });
     });
   });
 });
