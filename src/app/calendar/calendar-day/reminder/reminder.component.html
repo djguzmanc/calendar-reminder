@@ -1,0 +1,6 @@
+<div
+  class="reminder-box"
+  [style.background-color]="reminder.color">
+  <p>{{ reminder.reminder | truncate:20 }}</p>
+  <span class="time">{{ reminder.time }}</span>
+</div>

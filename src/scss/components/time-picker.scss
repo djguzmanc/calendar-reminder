@@ -1,0 +1,39 @@
+@import "_colors";
+
+.timepicker-backdrop-overlay {
+  z-index: 1000 !important;
+}
+
+.timepicker-overlay {
+  z-index: 1000 !important;
+}
+
+$someColor: $blue;
+
+.timepicker {
+  .timepicker__header {
+    background-color: $someColor !important;
+  }
+
+  .clock-face__clock-hand {
+    background-color: $someColor !important;
+
+    &::after {
+      background-color: $someColor !important;
+    }
+
+    &::before {
+      border-color: $someColor !important;
+    }
+  }
+
+  .clock-face__number {
+    > span.active {
+      background-color: $someColor !important;
+    }
+  }
+
+  button:not(.timepicker-dial__item) {
+    color: $someColor !important;
+  }
+}

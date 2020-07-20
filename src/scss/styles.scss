@@ -1,0 +1,29 @@
+@import "./components/time-picker";
+@import "~@angular/material/theming";
+@import '_colors';
+
+@include mat-core();
+
+$simple-calendar-primary: mat-palette($md-primary);
+$simple-calendar-accent: mat-palette($mat-pink, A200, A100, A400);
+
+$simple-calendar-warn: mat-palette($mat-red);
+
+$simple-calendar-theme: mat-light-theme($simple-calendar-primary, $simple-calendar-accent, $simple-calendar-warn);
+
+@include angular-material-theme($simple-calendar-theme);
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
