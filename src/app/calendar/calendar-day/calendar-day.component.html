@@ -1,15 +1,30 @@
 <strong
   class="number-label"
   [class.edge-number]="isEdge"
-  [class.disabled]="disabled">{{ dayNumber }}</strong>
+  [class.disabled]="disabled">
+  {{ dayNumber }}
+</strong>
+
+<button
+  *ngIf="reminders.length > 0"
+  mat-icon-button
+  aria-label="Delete reminders"
+  color="warn"
+  class="delete-all-button"
+  (click)="onDeleteAllClick($event)"
+  (keyup)="onKeyActionDelete($event)"
+  matTooltip="Delete all reminders"
+  matTooltipPosition="above">
+  <mat-icon>delete</mat-icon>
+</button>
 
 <ng-container *ngIf="!disabled">
-  <div class="reminders-overflow">
+  <perfect-scrollbar class="reminders-overflow">
     <app-reminder
       tabindex="0"
       (keyup)="onKeyAction(i, reminder, $event)"
       (click)="onReminderClick(i, reminder, $event)"
       *ngFor="let reminder of reminders; let i = index"
       [reminder]="reminder"></app-reminder>
-  </div>
+  </perfect-scrollbar>
 </ng-container>

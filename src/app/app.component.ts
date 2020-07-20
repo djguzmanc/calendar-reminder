@@ -5,7 +5,7 @@ import { allReminders } from './store/reminder/reminder.selectors';
 import { IDayInfo } from './utils/interfaces/day-info.interface';
 import { IReminder } from './utils/interfaces/reminder.interface';
 import { Observable } from 'rxjs';
-import { addReminder, editReminder } from './store/reminder/reminder.actions';
+import { addReminder, editReminder, deleteAllReminders } from './store/reminder/reminder.actions';
 
 @Component({
   selector: 'app-root',
@@ -50,5 +50,13 @@ export class AppComponent {
     this.currentYear = date.year;
     this.currentMonth = date.month;
     this.initializeDaysStream();
+  }
+
+  onDeleteAll(event: {
+    year: number;
+    month: number;
+    day: number;
+  }): void {
+    this.store.dispatch(deleteAllReminders(event));
   }
 }

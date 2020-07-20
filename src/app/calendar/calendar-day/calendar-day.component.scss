@@ -4,10 +4,21 @@
   background-color: white;
   border: solid 1px #d8d8d8;
   padding: 5px;
+  position: relative;
 }
 
 .number-label {
   display: block;
+}
+
+.delete-all-button {
+  position: absolute;
+  right: -9px;
+  top: -8px;
+  z-index: 100;
+  .material-icons {
+    font-size: 1rem;
+  }
 }
 
 .disabled {
@@ -21,6 +32,7 @@
 .reminders-overflow {
   overflow-y: auto;
   max-height: calc(100% - 19px);
+  padding-right: 16px;
 }
 
 app-reminder {

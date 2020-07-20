@@ -21,3 +21,12 @@ export const editReminder = createAction(
     index: number;
   }>()
 );
+
+export const deleteAllReminders = createAction(
+  '[Reminder] Delete All Reminders',
+  props<{
+    year: number;
+    month: number;
+    day: number;
+  }>()
+);

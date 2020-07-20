@@ -34,6 +34,9 @@ export class CalendarDayComponent implements OnInit, OnChanges {
     reminder: IReminder
   }>();
 
+  @Output()
+  deleteAll = new EventEmitter<void>();
+
   @HostBinding('style.background-color')
   bgColor: string = 'white';
 
@@ -72,6 +75,18 @@ export class CalendarDayComponent implements OnInit, OnChanges {
       index,
       reminder
     });
+  }
+
+  onKeyActionDelete(e: KeyboardEvent): void {
+    if (e.key === ' ') {
+      e.stopPropagation();
+      this.onDeleteAllClick();
+    }
+  }
+
+  onDeleteAllClick(e?: MouseEvent): void {
+    e?.stopPropagation();
+    this.deleteAll.emit();
   }
 
 }

@@ -18,6 +18,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { ReminderComponent } from './calendar/calendar-day/reminder/reminder.component';
 import { SharedPipesModule } from './pipes/shared-pipes.module';
 import { HttpClientModule } from '@angular/common/http';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,9 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
+    MatTooltipModule,
+    MatIconModule,
+    PerfectScrollbarModule,
     SharedPipesModule,
     HttpClientModule,
     MatDialogModule,

@@ -44,6 +44,13 @@ export class CalendarComponent implements OnInit, OnChanges {
     month: number;
   }>();
 
+  @Output()
+  deleteAll = new EventEmitter<{
+    year: number;
+    month: number;
+    day: number;
+  }>();
+
   dayLabels = DAYS;
   dayHeight: number;
   currentDate: Date;
@@ -111,6 +118,14 @@ export class CalendarComponent implements OnInit, OnChanges {
           index
         });
       }
+    });
+  }
+
+  onDeleteAll(day: IDayInfo): void {
+    this.deleteAll.emit({
+      year: this.year,
+      month: this.month,
+      day: day.dayNumber
     });
   }
 

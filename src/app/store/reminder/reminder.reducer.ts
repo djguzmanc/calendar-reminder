@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { IReminder } from 'src/app/utils/interfaces/reminder.interface';
-import { addReminder, editReminder } from './reminder.actions';
+import { addReminder, editReminder, deleteAllReminders } from './reminder.actions';
 import { findReminderIndex } from 'src/app/utils/functions/reminder-insert-index.function';
 
 export const reminderFeatureKey = 'reminders';
@@ -17,6 +17,22 @@ export const initialState: RemindersState = {};
 
 export const remindersReducer = createReducer(
   initialState,
+  on(deleteAllReminders, (state, action) => {
+    const yearData = state[action.year];
+    const monthData = yearData[action.month];
+
+    return {
+      ...state,
+      [action.year]: {
+        ...yearData,
+        [action.month]: {
+          ...monthData,
+          [action.day]: []
+        }
+      }
+    };
+  }),
+
   on(addReminder, (state, action) => {
 
     const yearData = state[action.year] || {};
