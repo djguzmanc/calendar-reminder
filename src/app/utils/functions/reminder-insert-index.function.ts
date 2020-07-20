@@ -1,14 +1,23 @@
 import { IReminder } from '../interfaces/reminder.interface';
 
+/**
+ * Converts a time string into an integer for further sorting
+ * @param time The string representing the time i.e. `8:00`
+ */
 const timeToInteger = (time?: string): number | undefined => {
   if (time) {
     return +time.split(':').join('');
   }
 };
 
+/**
+ * Find the correct index to insert the new reminder
+ * @param reminder The reminder
+ * @param collection The actual reminder collection
+ */
 export const findReminderIndex = (reminder: IReminder, collection: IReminder[]): {
-  found: boolean,
-  index: number
+  found: boolean;
+  index: number;
 } => {
   let minIndex = 0;
   let maxIndex = collection.length - 1;

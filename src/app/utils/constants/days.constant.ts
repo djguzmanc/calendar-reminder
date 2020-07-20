@@ -1,3 +1,6 @@
+/**
+ * Holds all days
+ */
 export const DAYS = [
   'Sunday',
   'Monday',

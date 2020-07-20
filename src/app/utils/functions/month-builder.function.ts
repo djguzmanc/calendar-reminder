@@ -6,7 +6,7 @@ import { IDayInfo } from '../interfaces/day-info.interface';
  * @param year The year to be consulted
  * @param month The month to be built
  */
-export const buildMonthArray = (year: number, month: number): Array<IDayInfo> => {
+export const buildMonthArray = (year: number, month: number): IDayInfo[] => {
   const array: IDayInfo[] = [];
 
   const startIndex = new Date(year, month, 1).getDay();

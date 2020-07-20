@@ -1,3 +1,6 @@
+/**
+ * Represents a reminder
+ */
 export interface IReminder {
   reminder: string;
   city: string;

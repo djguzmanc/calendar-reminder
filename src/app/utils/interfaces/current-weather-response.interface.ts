@@ -1,20 +1,24 @@
+/**
+ * Describes the current weather response
+ */
 export interface ICurrentWeatherResponse {
-  coord: Coord;
-  weather: Weather[];
+  coord: ICoord;
+  weather: IWeather[];
   base: string;
-  main: Main;
+  main: IMain;
   visibility: number;
-  wind: Wind;
-  clouds: Clouds;
+  wind: IWind;
+  clouds: IClouds;
   dt: number;
-  sys: Sys;
+  sys: ISys;
   timezone: number;
   id: number;
   name: string;
   cod: number;
 }
 
-interface Sys {
+// tslint:disable-next-line: completed-docs
+interface ISys {
   type: number;
   id: number;
   country: string;
@@ -22,16 +26,19 @@ interface Sys {
   sunset: number;
 }
 
-interface Clouds {
+// tslint:disable-next-line: completed-docs
+interface IClouds {
   all: number;
 }
 
-interface Wind {
+// tslint:disable-next-line: completed-docs
+interface IWind {
   speed: number;
   deg: number;
 }
 
-interface Main {
+// tslint:disable-next-line: completed-docs
+interface IMain {
   temp: number;
   feels_like: number;
   temp_min: number;
@@ -40,14 +47,16 @@ interface Main {
   humidity: number;
 }
 
-interface Weather {
+// tslint:disable-next-line: completed-docs
+interface IWeather {
   id: number;
   main: string;
   description: string;
   icon: string;
 }
 
-interface Coord {
+// tslint:disable-next-line: completed-docs
+interface ICoord {
   lon: number;
   lat: number;
 }

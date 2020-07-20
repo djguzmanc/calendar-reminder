@@ -22,6 +22,9 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
 
+/**
+ * Main module
+ */
 @NgModule({
   declarations: [
     AppComponent,

@@ -1,6 +1,9 @@
 import { createAction, props } from '@ngrx/store';
 import { IReminder } from 'src/app/utils/interfaces/reminder.interface';
 
+/**
+ * Action to add a reminder
+ */
 export const addReminder = createAction(
   '[Reminder] Add Reminder',
   props<{
@@ -11,6 +14,9 @@ export const addReminder = createAction(
   }>()
 );
 
+/**
+ * Action to edit a reminder
+ */
 export const editReminder = createAction(
   '[Reminder] Edit Reminder',
   props<{
@@ -22,6 +28,9 @@ export const editReminder = createAction(
   }>()
 );
 
+/**
+ * Action to delete reminders
+ */
 export const deleteAllReminders = createAction(
   '[Reminder] Delete All Reminders',
   props<{

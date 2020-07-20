@@ -1,28 +1,45 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ChangeDetectionStrategy } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { NgxMaterialTimepickerComponent } from 'ngx-material-timepicker';
 import { IReminder } from 'src/app/utils/interfaces/reminder.interface';
-import { Observable, of, combineLatest } from 'rxjs';
-import { switchMap, debounceTime, filter, map, catchError, tap, distinctUntilChanged, startWith } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { switchMap, debounceTime, filter, map, catchError, tap, startWith } from 'rxjs/operators';
 import { WeatherApiService } from 'src/app/services/weather-api.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ICurrentWeatherResponse } from 'src/app/utils/interfaces/current-weather-response.interface';
 import { IForecastWeatherResponse } from 'src/app/utils/interfaces/forecast-weather-response.interface';
 
+/**
+ * `Semi smart component` for creating a new reminder
+ */
 @Component({
   selector: 'app-reminder-editor',
   templateUrl: './reminder-editor.component.html',
-  styleUrls: ['./reminder-editor.component.scss']
+  styleUrls: ['./reminder-editor.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ReminderEditorComponent implements OnInit {
 
+  /**
+   * The reminder date
+   */
   date: Date;
 
+  /**
+   * Reminder form instance
+   */
   reminderForm: FormGroup;
 
+  /**
+   * Forecast stream
+   */
   forecast$: Observable<string>;
 
+  /**
+   * Tell s if there a forecast fetch
+   * in progress
+   */
   isFetchingForecast: boolean = false;
 
   constructor(
@@ -30,12 +47,13 @@ export class ReminderEditorComponent implements OnInit {
       currentYear: number;
       currentMonth: number;
       day: number;
-      reminder?: IReminder
+      reminder?: IReminder;
     },
-    private matDialogRef: MatDialogRef<ReminderEditorComponent>,
-    private weatherApi: WeatherApiService
+    private readonly matDialogRef: MatDialogRef<ReminderEditorComponent>,
+    private readonly weatherApi: WeatherApiService
   ) { }
 
+  // tslint:disable-next-line: completed-docs
   ngOnInit(): void {
     this.date = new Date(
       this.data.currentYear,
@@ -48,6 +66,9 @@ export class ReminderEditorComponent implements OnInit {
     this.initializeForecastService();
   }
 
+  /**
+   * Initializes the reminder form
+   */
   initializeForm(): void {
     this.reminderForm = new FormGroup({
       reminder: new FormControl(this.data.reminder?.reminder, [Validators.required, Validators.maxLength(30)]),
@@ -57,6 +78,9 @@ export class ReminderEditorComponent implements OnInit {
     });
   }
 
+  /**
+   * Initializes the forecast service
+   */
   initializeForecastService(): void {
     const isToday = this.dateIsToday(this.date);
     const distance = this.dateDaysDistance(new Date(), this.date);
@@ -114,6 +138,12 @@ export class ReminderEditorComponent implements OnInit {
 
   }
 
+  /**
+   * Chooses the weather data depending on
+   * the date
+   * @param city THe city to be queried
+   * @param isToday Tells if date is actually today's date
+   */
   weatherSrc(city: string, isToday: boolean): Observable<ICurrentWeatherResponse | IForecastWeatherResponse> {
     if (isToday) {
       return this.weatherApi.getCurrentWeatherByCity(city);
@@ -121,11 +151,20 @@ export class ReminderEditorComponent implements OnInit {
     return this.weatherApi.getForecastWeatherByCity(city);
   }
 
+  /**
+   * Tells if the current date is actually today
+   * @param date The date to evaluate
+   */
   dateIsToday(date: Date): boolean {
     const today = new Date();
     return today.setHours(0, 0, 0, 0) === date.setHours(0, 0, 0, 0);
   }
 
+  /**
+   * Returns the distances between two dates (in days)
+   * @param a Date
+   * @param b Date
+   */
   dateDaysDistance(a: Date, b: Date): number {
     const _a = new Date(a);
     _a.setHours(0, 0, 0, 0);
@@ -134,16 +173,27 @@ export class ReminderEditorComponent implements OnInit {
     return (_a.getTime() - _b.getTime()) / 1000 / 60 / 60 / 24;
   }
 
+  /**
+   * Opens the time picker
+   * @param timePickerRef The time picker ref
+   */
   onTimeClick(timePickerRef: NgxMaterialTimepickerComponent): void {
     timePickerRef.open();
   }
 
+  /**
+   * Closes the modal with an object representing
+   * the new or edited reminder
+   */
   createReminder(): void {
     if (this.reminderForm.valid) {
       this.matDialogRef.close(this.reminderForm.value);
     }
   }
 
+  /**
+   * Closes the modal
+   */
   onCancelClick(): void {
     this.matDialogRef.close();
   }

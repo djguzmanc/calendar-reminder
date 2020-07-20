@@ -1,15 +1,19 @@
+/**
+ * Describes the forecast response
+ */
 export interface IForecastWeatherResponse {
   cod: string;
   message: number;
   cnt: number;
-  list: List[];
-  city: City;
+  list: IList[];
+  city: ICity;
 }
 
-interface City {
+// tslint:disable-next-line: completed-docs
+interface ICity {
   id: number;
   name: string;
-  coord: Coord;
+  coord: ICoord;
   country: string;
   population: number;
   timezone: number;
@@ -17,49 +21,57 @@ interface City {
   sunset: number;
 }
 
-interface Coord {
+// tslint:disable-next-line: completed-docs
+interface ICoord {
   lat: number;
   lon: number;
 }
 
-interface List {
+// tslint:disable-next-line: completed-docs
+interface IList {
   dt: number;
-  main: Main;
-  weather: Weather[];
-  clouds: Clouds;
-  wind: Wind;
+  main: IMain;
+  weather: IWeather[];
+  clouds: IClouds;
+  wind: IWind;
   visibility: number;
   pop: number;
-  rain?: Rain;
-  sys: Sys;
+  rain?: IRain;
+  sys: ISys;
   dt_txt: string;
 }
 
-interface Sys {
+// tslint:disable-next-line: completed-docs
+interface ISys {
   pod: string;
 }
 
-interface Rain {
+// tslint:disable-next-line: completed-docs
+interface IRain {
   '3h': number;
 }
 
-interface Wind {
+// tslint:disable-next-line: completed-docs
+interface IWind {
   speed: number;
   deg: number;
 }
 
-interface Clouds {
+// tslint:disable-next-line: completed-docs
+interface IClouds {
   all: number;
 }
 
-interface Weather {
+// tslint:disable-next-line: completed-docs
+interface IWeather {
   id: number;
   main: string;
   description: string;
   icon: string;
 }
 
-interface Main {
+// tslint:disable-next-line: completed-docs
+interface IMain {
   temp: number;
   feels_like: number;
   temp_min: number;
