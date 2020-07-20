@@ -1,18 +1,7 @@
 {
   "extends": "tslint:recommended",
   "rules": {
-    "align": {
-      "options": [
-        "parameters",
-        "statements"
-      ]
-    },
-    "array-type": false,
-    "arrow-return-shorthand": true,
-    "curly": true,
-    "deprecation": {
-      "severity": "warning"
-    },
+    "arrow-parens": false,
     "component-class-suffix": true,
     "contextual-lifecycle": true,
     "directive-class-suffix": true,
@@ -28,22 +17,16 @@
       "app",
       "kebab-case"
     ],
-    "eofline": true,
     "import-blacklist": [
       true,
       "rxjs/Rx"
     ],
-    "import-spacing": true,
-    "indent": {
-      "options": [
-        "spaces"
-      ]
-    },
-    "max-classes-per-file": false,
+    "interface-name": true,
     "max-line-length": [
       true,
       140
     ],
+    "member-access": false,
     "member-ordering": [
       true,
       {
@@ -55,6 +38,13 @@
         ]
       }
     ],
+    "no-irregular-whitespace": true,
+    "no-trailing-whitespace": true,
+    "no-consecutive-blank-lines": true,
+    "semicolon": [
+      true,
+      "always"
+    ],
     "no-console": [
       true,
       "debug",
@@ -65,70 +55,99 @@
     ],
     "no-empty": false,
     "no-inferrable-types": [
-      true,
+      false,
       "ignore-params"
     ],
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "strict": true,
+    "noUnusedLocals": true,
     "no-non-null-assertion": true,
     "no-redundant-jsdoc": true,
     "no-switch-case-fall-through": true,
-    "no-var-requires": false,
+    "no-use-before-declare": true,
+    "no-var-requires": true,
+    "prefer-for-of": false,
+    "no-void-expression": false,
+    "prefer-object-spread": true,
+    "no-string-throw": true,
+    "no-unused-expression": [
+      true,
+      "allow-fast-null-checks"
+    ],
+    "no-unused-variable": true,
+    "triple-equals": true,
+    "unnecessary-constructor": true,
+    "use-default-type-parameter": true,
+    "cyclomatic-complexity": true,
+    "deprecation": true,
+    "arrow-return-shorthand": true,
+    "binary-expression-operand-order": true,
+    "class-name": true,
+    "ordered-imports": false,
+    "prefer-switch": true,
+    "prefer-template": true,
+    "type-literal-delimiter": true,
+    "eofline": true,
+    "import-spacing": true,
+    "jsdoc-format": [
+      true,
+      "check-multiline-start"
+    ],
+    "file-name-casing": [
+      true,
+      "kebab-case"
+    ],
+    "completed-docs": [
+      true,
+      "enums",
+      "functions",
+      "methods",
+      "types",
+      "variables",
+      "interfaces",
+      "classes"
+    ],
+    "comment-format": [
+      true,
+      "check-space",
+      "allow-trailing-lowercase",
+      {
+        "ignore-words": [
+          "TODO"
+        ]
+      }
+    ],
+    "max-classes-per-file": [
+      true,
+      1
+    ],
+    "prefer-const": true,
+    "prefer-readonly": true,
+    "array-type": [
+      true,
+      "array-simple"
+    ],
     "object-literal-key-quotes": [
       true,
       "as-needed"
     ],
+    "object-literal-sort-keys": false,
     "quotemark": [
       true,
       "single"
     ],
-    "semicolon": {
-      "options": [
-        "always"
-      ]
-    },
-    "space-before-function-paren": {
-      "options": {
-        "anonymous": "never",
-        "asyncArrow": "always",
-        "constructor": "never",
-        "method": "never",
-        "named": "never"
-      }
-    },
-    "typedef-whitespace": {
-      "options": [
-        {
-          "call-signature": "nospace",
-          "index-signature": "nospace",
-          "parameter": "nospace",
-          "property-declaration": "nospace",
-          "variable-declaration": "nospace"
-        },
-        {
-          "call-signature": "onespace",
-          "index-signature": "onespace",
-          "parameter": "onespace",
-          "property-declaration": "onespace",
-          "variable-declaration": "onespace"
-        }
-      ]
-    },
     "variable-name": {
       "options": [
         "ban-keywords",
         "check-format",
-        "allow-pascal-case"
+        "allow-leading-underscore",
+        "allow-pascal-case",
+        "require-const-for-all-caps"
       ]
     },
-    "whitespace": {
-      "options": [
-        "check-branch",
-        "check-decl",
-        "check-operator",
-        "check-separator",
-        "check-type",
-        "check-typecast"
-      ]
-    },
+    "no-shadowed-variable": true,
+    "trailing-comma": true,
     "no-conflicting-lifecycle": true,
     "no-host-metadata-property": true,
     "no-input-rename": true,

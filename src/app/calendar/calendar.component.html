@@ -1,0 +1,30 @@
+<div class="date-bar">
+  <i
+    class="material-icons"
+    (click)="onPrevMonth()">arrow_left</i>
+  <span>{{ currentDate | date:'MMMM yyyy' }}</span>
+  <i
+    class="material-icons"
+    (click)="onNextMonth()">arrow_right</i>
+</div>
+<div class="calendar-container">
+  <div
+    class="day-label"
+    *ngFor="let dayLabel of dayLabels">
+    {{ dayLabel }}
+  </div>
+
+  <app-calendar-day
+    [class.disable-focus]="day.disabled"
+    [class.disable-focus--on-edge]="day.disabled && day.isEdge"
+    [attr.tabindex]="day.disabled ? -1 : 0"
+    (keyup)="fromKeyUp(day, $event)"
+    (click)="onDayClick(day)"
+    *ngFor="let day of days; trackBy: dayTrackBy"
+    [dayNumber]="day.dayNumber"
+    [disabled]="day.disabled"
+    [isEdge]="day.isEdge"
+    [reminders]="day.reminders"
+    (action)="onReminderClick(day, $event.index, $event.reminder)"
+    (deleteAll)="onDeleteAll(day)"></app-calendar-day>
+</div>

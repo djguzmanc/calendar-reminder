@@ -28,8 +28,14 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/scss/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/scss/settings",
+                "src/scss/tools"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
@@ -60,6 +66,9 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "es5": {
+              "tsConfig": "./tsconfig-es5.app.json"
             }
           }
         },
@@ -71,6 +80,9 @@
           "configurations": {
             "production": {
               "browserTarget": "simple-calendar:build:production"
+            },
+            "es5": {
+              "browserTarget": "simple-calendar:build:es5"
             }
           }
         },
@@ -92,8 +104,14 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/scss/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/scss/settings",
+                "src/scss/tools"
+              ]
+            },
             "scripts": []
           }
         },
@@ -123,6 +141,11 @@
           }
         }
       }
-    }},
-  "defaultProject": "simple-calendar"
+    }
+  },
+  "defaultProject": "simple-calendar",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics",
+    "analytics": "fc01bb38-6652-45a8-b003-de6fa02c1043"
+  }
 }

@@ -1,0 +1,35 @@
+$blue: #2e73b4;
+
+/* For use in src/lib/core/theming/_palette.scss */
+$md-primary: (
+  50: #e6eef6,
+  100: #c0d5e9,
+  200: #97b9da,
+  300: #6d9dcb,
+  400: #4d88bf,
+  500: #2e73b4,
+  600: #296bad,
+  700: #2360a4,
+  800: #1d569c,
+  900: #12438c,
+  A100: #bfd6ff,
+  A200: #8cb6ff,
+  A400: #5995ff,
+  A700: #4085ff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #ffffff,
+  ),
+);

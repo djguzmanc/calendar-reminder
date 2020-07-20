@@ -7,8 +7,11 @@ import {
   platformBrowserDynamicTesting
 } from '@angular/platform-browser-dynamic/testing';
 
+// tslint:disable-next-line: completed-docs
 declare const require: {
+  // tslint:disable-next-line: completed-docs
   context(path: string, deep?: boolean, filter?: RegExp): {
+    // tslint:disable-next-line: completed-docs
     keys(): string[];
     <T>(id: string): T;
   };
@@ -20,6 +23,7 @@ getTestBed().initTestEnvironment(
   platformBrowserDynamicTesting()
 );
 // Then we find all the tests.
+// tslint:disable-next-line: completed-docs
 const context = require.context('./', true, /\.spec\.ts$/);
 // And load the modules.
 context.keys().map(context);
