@@ -32,7 +32,8 @@
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
-                "src/scss/settings"
+                "src/scss/settings",
+                "src/scss/tools"
               ]
             },
             "scripts": []
@@ -107,7 +108,8 @@
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
-                "src/scss/settings"
+                "src/scss/settings",
+                "src/scss/tools"
               ]
             },
             "scripts": []

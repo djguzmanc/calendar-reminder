@@ -1,12 +1,11 @@
 @import "_colors";
+@import 'mixins';
 
 :host {
 }
 
 .date-bar {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
+  @include flex-between;
   padding: 5px;
   background-color: map-get($map: $md-primary, $key: 800);
   color: white;
